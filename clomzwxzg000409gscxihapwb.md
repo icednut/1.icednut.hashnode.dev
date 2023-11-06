@@ -27,9 +27,9 @@ tags: scala, side-effect, lazy-evaluation
 
 여기 콘솔에 데이터를 출력하는 코드를 살펴보자. 앞서 말했듯이 이것은 부수효과다.
 
-![](https://images.velog.io/images/icednut/post/6571f710-c073-48f5-946b-e929bb15d959/1-2.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699282950585/3ae07dde-581b-4dbc-b6c3-9225f4067703.png align="left")
 
-![](https://images.velog.io/images/icednut/post/946ee7be-01d7-4db2-9c48-a33927e76bf7/2-2.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699282960080/8869a4e8-54b9-41ec-a444-852558864d0c.png align="left")
 
 부수효과가 있는 함수(`printSystem`)를 그냥 실행하는 것에는 별문제가 없어 보인다.
 
@@ -41,15 +41,15 @@ tags: scala, side-effect, lazy-evaluation
 
 그럼 `printSystem` 함수 내부에 있는 부수 효과인 `println`를 값으로 취급하여 `pritnSystem` 함수에 부수효과를 없애보자. 여기서 손쉽게 쓸 수 있는게 `scala.concurrent.Future` 인데 Future로 부수효과를 감싸보자.
 
-![](https://images.velog.io/images/icednut/post/fe83772a-becc-407a-924c-32eb316f7f0e/3.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699282979966/d276aebc-085b-4bf3-8db3-e3932692e28d.png align="left")
 
 여기서 `Future(println("Launch missiles"))`라는 로직은 동일하니 하나로 생략해보자.
 
-![](https://images.velog.io/images/icednut/post/6c97b0e5-0c4e-4aad-8a59-548c31a5a742/4.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699282988975/1ec77413-618b-46ec-9a37-14c54aaf9534.png align="left")
 
 콘솔 출력 결과는 동일할 거라고 생각하지만 println은 한 번만 실행된다.
 
-![](https://images.velog.io/images/icednut/post/db89f5c0-49ae-4fc4-9710-5d22d34aeca5/5.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699282996276/3410fb7f-0d4f-48c7-a744-7aa1100e7095.png align="left")
 
 앞에서 Future를 새로 만들어서 합성하는 경우에는 기대한대로 결과가 나왔지만 코드를 줄이기 위해 Future를 재사용한 경우에는 기대한 것처럼 동작하지 않는다. 왜 그럴까?
 
@@ -63,13 +63,13 @@ Lazy Evaluation을 하기 위해 스칼라에는 call-by-name 이라는 특징�
 
 이게 무슨 말인지 모르겠으니 코드로 살펴보자.
 
-![](https://images.velog.io/images/icednut/post/7e41114c-0e44-40dc-8c57-005e5aa8ed86/6.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699283006325/bf38b02f-e985-48fe-af18-f90ceb6702c8.png align="left")
 
 여기서 LazyIO가 부수효과를 Lazy Evaluation 할 수 있는 자료형이라고 볼 수 있다. 바로 LazyIO case class 필드에 runEffect와 컴패니언 오브젝트의 io 메소드를 살펴보면 effect 라는 파라미터가 있는데 이 파라미터들은 함수이다.
 
 결국 LazyIO 자료형은 부수효과를 실행하는 함수를 값(`runEffect`, `effect`)으로 취급하여 그 실행을 외부로 넘겼다. 또한 map, flatMap 함수를 이용하여 합성까지 할 수 있도록 되어 있다. 이렇게 값으로 취급된 부수효과를 내가 원하는대로 합성하는 Pure Function을 함수형 프로그래밍에 그토록 열광하는 이유라고 본다.
 
-![](https://images.velog.io/images/icednut/post/837e92a3-94dd-41b5-8ead-27df84a87396/7.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699283014887/a05534b7-9d23-49bb-8d1b-119801d16f5e.png align="left")
 
 위 코드에서 `twoRuns.runEffect()` 함수를 호출하게 되면 어떻게 될까? 그 과정을 살펴보면 다음과 같다.
 
@@ -80,7 +80,7 @@ Lazy Evaluation을 하기 위해 스칼라에는 call-by-name 이라는 특징�
 * `LazyIO.flatMap` 내부에선 어떤 일이 펼쳐질까?
     
 
-![](https://images.velog.io/images/icednut/post/f4cb7e9e-e436-4982-a03b-3bac252b01a0/8.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699283022426/ba6c7c6d-1a12-4a46-ac7e-9417eb39496c.png align="left")
 
 * 우선 LazyIO 오브젝트의 `io` 함수는 thunk 이기 때문에 즉시 실행이 되질 않는다. 따라서 `fn(runEffect()).runEffect()` 이 부분은 즉시 실행이 되질 않는다.
     
