@@ -514,7 +514,7 @@ val consoleLoggingContext = object : LoggingContext {
 
 * [https://blogrockthejvm.com/why-are-typeclasses-useful](https://tech.kakaopay.com/post/overcome-spring-aop-with-kotlin/#transactional-%EA%B7%B9%EB%B3%B5%ED%95%B4%EB%B3%B4%EA%B8%B0)
     
-* [https://velog.io/@icednut/타입클래스를-이용한-애드혹-다형성-구현하기-Ad-hoc-Polymorphism-in-Scala](https://tech.kakaopay.com/post/overcome-spring-aop-with-kotlin/#transactional-%EA%B7%B9%EB%B3%B5%ED%95%B4%EB%B3%B4%EA%B8%B0)
+* [https://icednut.hashnode.dev/ad-hoc-polymorphism-in-scala](https://icednut.hashnode.dev/ad-hoc-polymorphism-in-scala)
     
 
 그럼 이제 타입 클래스를 이용한 트랜잭션 처리를 살펴보자.
