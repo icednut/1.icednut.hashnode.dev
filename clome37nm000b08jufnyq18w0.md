@@ -749,7 +749,7 @@ class UserController(
 
 # 마치며
 
-위에 언급한 결과물과 관련 테스트코드는 Github([https://github.com/icednut/kotlin-springtx-exercise/tree/step-02)에](https://github.com/icednut/kotlin-springtx-exercise/tree/step-02)에) 정리해 두었다. 실제로 로컬환경에서 실행 가능한 상태로 정리해두었다.
+위에 언급한 결과물과 관련 테스트코드는 Github([https://github.com/icednut/kotlin-springtx-exercise/tree/step-02](https://github.com/icednut/kotlin-springtx-exercise/tree/step-02)에))에 정리해 두었다. 실제로 로컬환경에서 실행도 가능하다.
 
 돌이켜 생각해 보면 타입 클래스 구현체를 companion object에 담아서 전역 변수처럼 사용한 것이 과연 이게 타입 클래스의 원래 의도와 맞는 방법일까 라는 의문이 든다. 변명이지만 트랜잭션 타입클래스가 스프링에 의존할 수 밖에 없었고 테스트코드 작성 때문에 트랜잭션 관련 빈을 전역 변수처럼 사용하게 되었는데 이 부분도 아쉬웠다. 만약 트랜잭션 처리를 타입클래스로 구현해야 한다면 Spring free한 트랜잭션 처리를 할 수 있는 방법을 찾아봐야겠다
 
