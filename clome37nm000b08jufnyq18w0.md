@@ -749,8 +749,8 @@ class UserController(
 
 # 마치며
 
-위에 언급한 결과물과 관련 테스트코드는 Github([https://github.com/icednut/kotlin-springtx-exercise/tree/step-02)에](https://tech.kakaopay.com/post/overcome-spring-aop-with-kotlin/#transactional-%EA%B7%B9%EB%B3%B5%ED%95%B4%EB%B3%B4%EA%B8%B0) 정리해 두었다. 실제로 로컬환경에서 실행 가능한 상태로 정리해두었다.
+위에 언급한 결과물과 관련 테스트코드는 Github([https://github.com/icednut/kotlin-springtx-exercise/tree/step-02)에](https://github.com/icednut/kotlin-springtx-exercise/tree/step-02)에) 정리해 두었다. 실제로 로컬환경에서 실행 가능한 상태로 정리해두었다.
 
-돌이켜 생각해 보면 타입 클래스 구현체를 companion object에 담아서 전역 변수처럼 사용하려 하였는데 타입클래스 사용에 원래 의도와는 맞지 않는 방법이라 생각한다. 트랜잭션 타입클래스가 스프링에 의존할 수 밖에 없어서 트랜잭션 관련 빈을 전역 변수처럼 사용하게 되었는데 이 부분도 아쉬웠다. 다음에 혹시 트랜잭션 처리를 타입클래스로 구현해야 한다면 Spring free한 트랜잭션 처리를 할 수 있는 방법을 찾아봐야겠다.
+돌이켜 생각해 보면 타입 클래스 구현체를 companion object에 담아서 전역 변수처럼 사용한 것이 과연 이게 타입 클래스의 원래 의도와 맞는 방법일까 라는 의문이 든다. 변명이지만 트랜잭션 타입클래스가 스프링에 의존할 수 밖에 없었고 테스트코드 작성 때문에 트랜잭션 관련 빈을 전역 변수처럼 사용하게 되었는데 이 부분도 아쉬웠다. 만약 트랜잭션 처리를 타입클래스로 구현해야 한다면 Spring free한 트랜잭션 처리를 할 수 있는 방법을 찾아봐야겠다
 
 다음 글에서는 타입 클래스와 context receiver를 어떨 때 쓰는 게 좋을지 정리해 볼 예정이다.
