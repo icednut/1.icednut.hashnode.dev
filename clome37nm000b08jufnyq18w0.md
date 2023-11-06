@@ -333,10 +333,9 @@ class Tx(
        }
    }
 }
-
 ```
 
-또한 트랜잭션 처리가 필요한 곳에 `@Transactional` 이나 [`Tx.run`](https://tech.kakaopay.com/post/overcome-spring-aop-with-kotlin/#transactional-%EA%B7%B9%EB%B3%B5%ED%95%B4%EB%B3%B4%EA%B8%B0)`{ ... }` 을 쓰는 것을 컴파일 타임에 강제할 수 있는 방법이 없는 것도 약간 아쉬웠다. 만약 누군가 실수로 트랜잭션 처리를 누락한다면? 물론 동료들과 코드 리뷰 시 이를 인지하여 어느 정도 바로 잡을 수는 있겠지만 여전히(?) 코딩과 리뷰는 사람이 하는 일이기에 실수의 여지가 있다.
+또한 트랜잭션 처리가 필요한 곳에 `@Transactional` 이나 `Tx.run { ... }` 을 쓰는 것을 컴파일 타임에 강제할 수 있는 방법이 없는 것도 약간 아쉬웠다. 만약 누군가 실수로 트랜잭션 처리를 누락한다면? 물론 동료들과 코드 리뷰 시 이를 인지하여 어느 정도 바로 잡을 수는 있겠지만 여전히(?) 코딩과 리뷰는 사람이 하는 일이기에 실수의 여지가 있다.
 
 ```kotlin
 @Service
@@ -354,7 +353,6 @@ class UserService(
        logRepository.save(log)
    }
 }
-
 ```
 
 # 그럼 어떻게 보완할 것인가?
@@ -447,7 +445,6 @@ class Tx(
        }
    }
 }
-
 ```
 
 하지만 여전히 Tx bean 안에서 companion object의 `txAdvice`, `txAdvice2`가 아닌 `_txAdviceState`, `_txAdviceState2`를 사용할 수 있다는 논란의 여지는 남아있다. `lateinit val`의 변수명을 통해 이를 쓰지 못하게 알린다든가 해야할텐데 개인적으로 `lateinit val` 같은 문법이 있으면 좀 더 깔끔한 코드로 컴파일 타임에 이를 방지할 수 있을 거라 생각한다. 하지만 없는 거 보면 뭔가 이유가 있거나 니즈가 커지면 언젠가 나오지 않을까 기대해 본다.
@@ -475,7 +472,6 @@ tasks.withType<KotlinCompile> {
 		jvmTarget = "17"
 	}
 }
-
 ```
 
 Context Receiver 문법을 사용 예시는 다음과 같다. 여기서는 실제 로깅을 타입클래스에서 처리하도록 위임했다.
@@ -551,7 +547,6 @@ class UserService(
         createdUser
     }
 }
-
 ```
 
 뭔가 `@Transactional`을 쓰는 것과 비슷해 보이지만 실제 트랜잭션 처리는 TxScope 타입클래스가 처리하는 것을 볼 수 있다. 어노테이션 방식과 다른 점은 TxScope를 받기만 한다고 해서 트랜잭션 처리가 되지 않고 타입클래스의 멤버 메소드(여기서는 readable, writable)를 호출해야지 실제 트랜잭션 처리를 수행하게 된다.
@@ -592,7 +587,6 @@ class UserController(
         }
     }
 }
-
 ```
 
 ```kotlin
@@ -670,7 +664,6 @@ class UserService(
        logRepository.save(log)
    }
 }
-
 ```
 
 ```kotlin
@@ -689,7 +682,6 @@ class UserController(
         }
     }
 }
-
 ```
 
 이런 경우 컴파일 오류는 발생하지 않는다. 다만 receiver를 넘겼지만 받는 쪽(`userService.deleteUser` 메소드)에서 context receiver 문법을 쓰지 않았기 때문에 UserController 클래스에서 receiver를 사용하고 있지 않다는 경고(warn)가 발생하게 된다.
@@ -725,7 +717,6 @@ class UserService(
 
     ...
 }
-
 ```
 
 ```kotlin
