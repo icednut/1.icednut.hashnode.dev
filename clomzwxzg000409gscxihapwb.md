@@ -87,7 +87,7 @@ Lazy Evaluation을 하기 위해 스칼라에는 call-by-name 이라는 특징�
 * 이제 `fn(runEffect()).runEffect()`는 LazyIO 오브젝트의 `io` 함수의 파라미터로 넘겨지게 되는데 넘겨받은 파라미터는 LazyIO 케이스 클래스에 멤버 필드, 즉 함수 값으로 전달된다. (아래 코드를 설명하고 있는 것임)
     
 
-![](https://images.velog.io/images/icednut/post/8360c480-477e-4468-9cb3-51a275e98f64/9.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699283330290/9a8affd9-60ee-4c80-aa1c-b17177f0af39.png align="left")
 
 * 여기서 `fn(runEffect()).runEffect()`을 다시 살펴보자.
     
@@ -110,21 +110,21 @@ Lazy Evaluation을 하기 위해 스칼라에는 call-by-name 이라는 특징�
 
 Scala 생태계에 LazyIO와 같은 컨셉을 갖춘 Cats Effect 라는 라이브러리가 있다. Cats Effect의 IO 라는 클래스가 LazyIO와 비슷하다고 할 수 있는데 Cats Effect를 이용하여 부수효과를 핸들링하는게 직접 구현한거보다 더 많은 기능을 제공하고 있고 Cats 생태계를 이용하기에도 편할 것 같다.
 
-![](https://images.velog.io/images/icednut/post/5b894b41-1ea4-448e-9f31-8eda4eadbba6/carbon.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699283346447/012b4643-554c-41b6-9580-23dab0c08548.png align="left")
 
-![](https://images.velog.io/images/icednut/post/14cda8f8-fde1-4a1a-9923-10958cb3436b/10.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699283353321/4f54cc9f-d672-4da4-9d89-6934c1477605.png align="left")
 
 unsafeRunAndForget 이라는 메소드가 좀 거슬리니 Cats Effect에서 제공하는 IO 핸들링 메커니즘을 이용하자.
 
-![](https://images.velog.io/images/icednut/post/8d50011a-7d38-4d8d-8f9f-1ac23344cae5/11.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699283366468/2c9ed4e4-e213-4f4b-bfef-b0101aa2c81e.png align="left")
 
 하나 더 덧붙이자면 이렇게 부수효과를 합성 가능한 값으로 다루는 자료형인 IO를 모나드라고 부른다. 위에 코드에서는 IO 모나드만 반환했는데 `LazyIO.runEffect`를 호출하듯이 IO 모나드를 실행하는 외부는 어디일까?
 
 위에 코드에는 다 표현되지는 않았지만 twoRuns는 `IO[Unit]` 타입이다. 이걸 Future로 바꾸는 implicit 함수가 이미 EffectTestSupport 라는 트레이트에 선언되어 있어서 이게 작용하게 된다.
 
-![](https://images.velog.io/images/icednut/post/d351c292-b63f-4a2e-b1d9-7d36812b4677/12.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699283377825/6591f4f4-1d75-4592-b302-92f8265b369e.png align="left")
 
-![](https://images.velog.io/images/icednut/post/c40c7f3e-31f3-43d8-a8ad-17051b91d65f/13.png align="left")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1699283392550/afba8d36-35c1-49e5-9afb-70ae97e11830.png align="left")
 
 Future로 변환하는 과정에서 unsafeToFuture 하는 메소드를 호출하게 되는데 Future로 변환하려면 어쩔 수 없이 이 메소드를 호출해야 되나보다. 이 다음은 org.scalatest.funsuite.AsyncFunSuite 로 인해 비동기로 검증 작업을 진행하게 된다. (이 부분 부터는 Scalatest 영역이라 설명 생략)
 
