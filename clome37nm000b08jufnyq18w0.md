@@ -480,7 +480,7 @@ Context Receiver 문법을 사용 예시는 다음과 같다. 여기서는 실�
 
 * [https://kotlinlang.org/docs/whatsnew1620.html#prototype-of-context-receivers-for-kotlin-jvm](https://kotlinlang.org/docs/whatsnew1620.html#prototype-of-context-receivers-for-kotlin-jvm)
     
-* [https://blog.rockthejvm.com/kotlin-context-receivers](https://tech.kakaopay.com/post/overcome-spring-aop-with-kotlin/#transactional-%EA%B7%B9%EB%B3%B5%ED%95%B4%EB%B3%B4%EA%B8%B0)
+* [https://blog.rockthejvm.com/kotlin-context-receivers](https://blog.rockthejvm.com/kotlin-context-receivers)
     
 
 ```kotlin
