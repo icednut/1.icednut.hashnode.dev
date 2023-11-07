@@ -376,7 +376,7 @@ class UserService(
 
 코틀린의 Standard Delegates 중에서 Lazy Properties 라는 방법이 있다.
 
-출처: [https://kotlinlang.org/docs/delegated-properties.html#lazy-properties](https://tech.kakaopay.com/post/overcome-spring-aop-with-kotlin/#transactional-%EA%B7%B9%EB%B3%B5%ED%95%B4%EB%B3%B4%EA%B8%B0)
+출처: [https://kotlinlang.org/docs/delegated-properties.html#lazy-properties](https://kotlinlang.org/docs/delegated-properties.html#lazy-properties)
 
 ```kotlin
 val lazyValue: String by lazy {
@@ -478,7 +478,7 @@ Context Receiver 문법을 사용 예시는 다음과 같다. 여기서는 실�
 
 참고
 
-* [https://kotlinlang.org/docs/whatsnew1620.html#prototype-of-context-receivers-for-kotlin-jvm](https://tech.kakaopay.com/post/overcome-spring-aop-with-kotlin/#transactional-%EA%B7%B9%EB%B3%B5%ED%95%B4%EB%B3%B4%EA%B8%B0)
+* [https://kotlinlang.org/docs/whatsnew1620.html#prototype-of-context-receivers-for-kotlin-jvm](https://kotlinlang.org/docs/whatsnew1620.html#prototype-of-context-receivers-for-kotlin-jvm)
     
 * [https://blog.rockthejvm.com/kotlin-context-receivers](https://tech.kakaopay.com/post/overcome-spring-aop-with-kotlin/#transactional-%EA%B7%B9%EB%B3%B5%ED%95%B4%EB%B3%B4%EA%B8%B0)
     
@@ -512,7 +512,7 @@ val consoleLoggingContext = object : LoggingContext {
 
 타입 클래스가 뭔지 처음 보는 사람들을 위해 타입 클래스를 설명하고 싶지만 여기에 쓰기엔 너무 길어질 것 같아서 관련 글을 소개하는 것으로 대신한다. 스칼라로 타입클래스를 설명한 글이지만 개념을 익히기엔 좋을 것 같다.
 
-* [https://blogrockthejvm.com/why-are-typeclasses-useful](https://tech.kakaopay.com/post/overcome-spring-aop-with-kotlin/#transactional-%EA%B7%B9%EB%B3%B5%ED%95%B4%EB%B3%B4%EA%B8%B0)
+* [https://blogrockthejvm.com/why-are-typeclasses-useful](https://blogrockthejvm.com/why-are-typeclasses-useful)
     
 * [https://icednut.hashnode.dev/ad-hoc-polymorphism-in-scala](https://icednut.hashnode.dev/ad-hoc-polymorphism-in-scala)
     
