@@ -512,7 +512,7 @@ val consoleLoggingContext = object : LoggingContext {
 
 타입 클래스가 뭔지 처음 보는 사람들을 위해 타입 클래스를 설명하고 싶지만 여기에 쓰기엔 너무 길어질 것 같아서 관련 글을 소개하는 것으로 대신한다. 스칼라로 타입클래스를 설명한 글이지만 개념을 익히기엔 좋을 것 같다.
 
-* [https://blogrockthejvm.com/why-are-typeclasses-useful](https://blogrockthejvm.com/why-are-typeclasses-useful)
+* [https://blog.rockthejvm.com/why-are-typeclasses-useful](https://blog.rockthejvm.com/why-are-typeclasses-useful)
     
 * [https://icednut.hashnode.dev/ad-hoc-polymorphism-in-scala](https://icednut.hashnode.dev/ad-hoc-polymorphism-in-scala)
     
